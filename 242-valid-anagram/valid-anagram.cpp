@@ -1,8 +1,21 @@
 class Solution {
 public:
     bool isAnagram(string s, string t) {
-        sort(s.begin(),s.end());
-        sort(t.begin(),t.end());
-        return s==t;
+        unordered_map<char , int> freqMap;
+        for(char x: s){
+            freqMap[x]++;
+        }
+        for(char y:t){
+            freqMap[y]--;
+        }
+        for(const auto&[key,value]:freqMap){
+            if(value==0){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        return 0;
     }
 };
